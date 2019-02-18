@@ -1,0 +1,18 @@
+@keyframes blinker
+{
+    0% { color: rgba(34, 34, 34, 1); }
+    50% { color: rgba(34, 34, 34, 0); }
+    100% { color: rgba(34, 34, 34, 1); }                
+}
+
+@-webkit-keyframes blinker
+{
+    0% { color: rgba(34, 34, 34, 1); }
+    50% { color: rgba(34, 34, 34, 0); }
+    100% { color: rgba(34, 34, 34, 1); }                
+}
+
+body
+{
+    background-color: cyan;
+}

@@ -1,0 +1,144 @@
+a
+{
+    text-decoration:    none;
+}
+
+.tabCtlContainer
+{
+    width:              100%;
+    height:             fit-content;
+    border:             none;
+    padding:            0px;
+    margin:             0px;
+    margin-top:         20px;
+}
+
+.docker, .docker2
+{
+    position:           absolute;
+    left:               3px;
+    right:              3px;
+    border-style:       none;
+    border-color:       transparent;
+    margin:             0px;
+    padding:            0px;
+    background-color:   transparent;
+}
+
+.docker
+{
+    top:                45pt;
+    bottom:             5px;
+}
+
+.docker2
+{
+    top:                0px;
+    bottom:             50pt;
+}
+
+.dockerFrame
+{
+    width:              100%;
+    height:             100%;
+}
+
+.bottomButArea
+{
+    position:           absolute;
+    left:               0px;
+    width:              100%;
+    height:             50pt;
+    bottom:             0px;
+    background-color:   lightgreen;
+    margin:             0px;
+    padding-top:        15pt;
+}
+
+.bottomBut
+{
+    display:            inline;
+    height:             32pt;
+    margin-top:         0px;
+    margin-left:        10pt;
+    border-style:       none;
+    border-width:       0px;
+    border-radius:      10px;
+    box-shadow:         4px 4px rgb(120, 120, 120);
+    background-color:   rgba(0, 220, 0, 1.0);
+    color:              rgb(80, 80, 80);
+    font-size:          22pt;
+    line-height:        30pt;
+    font-weight:        normal;
+    padding-left:       30pt;
+    padding-right:      7pt;
+    padding-top:        5pt;
+    padding-bottom:     5pt;
+    text-align:         left;
+    width:              fit-content;
+}
+
+.bottomBut:hover
+{
+    color: rgb(0, 0, 200);
+    -webkit-animation: blinker 3s linear infinite;
+    animation: blinker 3s linear infinite;
+}
+
+.bottomButIcon
+{
+    position:           relative;
+    left:               -20pt;
+    top:                6pt;
+    margin-right:       -17pt;
+    padding:            0px;
+}
+
+.rightBox
+{
+    height:             25pt;
+    float:              right;
+    margin-right:       10pt;
+    line-height:        27pt;
+}
+
+.tabBut
+{
+    width:              fit-content;
+    margin:             0px;
+    margin-left:        5px;
+    padding:            10px;
+    text-align:         center;
+    display:            inline;
+    border-style:       none;
+    border-radius:      4px;
+    box-shadow:         4px 4px rgb(120, 120, 120);
+    background-color:   rgba(0, 255, 0, 0.5);
+    color:              rgb(80, 80, 80);
+    font-size:          15pt;
+    font-weight:        bold;
+    cursor:             pointer;
+    user-select:        none;
+}
+
+.rightTabBut
+{
+    float:              right;
+    margin-top:         -10px;
+    margin-right:       10px;
+}
+
+.tabBut:hover
+{
+    color:              rgb(0, 0, 200);
+    -webkit-animation:  blinker 3s linear infinite;
+    animation:          blinker 3s linear infinite;
+    cursor:             pointer;
+}
+
+.loading
+{
+    margin:             auto;
+    display:            none;
+    top:                40%;
+}

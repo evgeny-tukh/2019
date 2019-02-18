@@ -1,0 +1,125 @@
+body
+{
+    background-color: rgb(200, 200, 255);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-image: url(res/collage2.jpg);
+    background-size: 50%;
+}
+
+.wspShortcut
+{
+    position: absolute;
+    width: 30%;
+    height: 40pt;
+    border-style: none;
+    border-width: 0px;
+    border-radius: 10px;
+    box-shadow: 4px 4px rgb(120, 120, 120);
+    background-color: rgba(0, 255, 0, 0.5);
+    color: rgb(80, 80, 80);
+    font-size: 25pt;
+    font-weight: bold;
+    padding-left: 20pt;
+    padding-right: 0pt;
+    padding-top: 5pt;
+    padding-bottom: 20pt;
+    text-align: center;
+}
+
+.wspShortcut:hover
+{
+    color: rgb(0, 0, 200);
+    -webkit-animation: blinker 3s linear infinite;
+    animation: blinker 3s linear infinite;
+}
+
+.wsHint
+{
+    font-size: 13pt;
+    font-weight: normal;
+    width: 82%;
+    height: 30pt;
+    line-break: auto;
+    margin-left: 20pt;
+}
+
+.wspIcon
+{
+    position: absolute;
+    left: 10pt;
+    top: 27pt;
+    height: 30pt;
+}
+
+.flmon
+{
+    top: 3%;
+    left: 3%;
+}
+
+.other
+{
+    bottom: 3%;
+    left: 3%;
+}
+
+.maint
+{
+    top: 42%;
+    left: 3%;
+}
+
+.crew
+{
+    top: 42%;
+    right: 3%;
+}
+
+.res
+{
+    top: 40%;
+    left: 3%;
+}
+
+.fumon
+{
+    top: 3%;
+    right: 3%;
+}
+
+.wposts
+{
+    bottom: 3%;
+    left: 3%;
+}
+
+.safecnt
+{
+    bottom: 3%;
+    right: 3%;
+}
+
+.sno
+{
+    bottom: 3%;
+    left: 40%;
+    right: 40%;
+    width: auto;
+}
+
+.efficiency
+{
+    top: 22%;
+    left: 35%;
+    right: 35%;
+    width: auto;
+}
+
+.exit
+{
+    bottom: 22%;
+    left: 35%;
+    right: 35%;
+    width: auto;
+}

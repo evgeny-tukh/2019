@@ -1,0 +1,73 @@
+<?php
+    require_once 'session/session_mgr.php';
+    
+    $sessionMgr = new SessionManager ();
+
+    $curTime = time ();
+    
+    if (!$sessionMgr->isAuthenticated () || $sessionMgr->isSessionExpired ())
+    {
+        include ('login.html');
+    }
+    else
+    {
+        $sessionMgr->setAccessTime ();
+        
+        $features = $sessionMgr->getUserFeatures ();
+        ?>
+
+        <!DOCTYPE html>
+        <!--
+        To change this license header, choose License Headers in Project Properties.
+        To change this template file, choose Tools | Templates
+        and open the template in the editor.
+        -->
+        <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>Новый проект (Демо)</title>
+                <link rel="stylesheet" href="common.css"/>
+                <link rel="stylesheet" href="main.css"/>
+            </head>
+            <body>
+                <a href="fmon.php">
+                    <div class="wspShortcut flmon blink">Мониторинг флота
+                        <img class="wspIcon" src="res/tug32.png">
+                        <div class="wsHint">Отслеживание судов, опер.деятельность,навиг.безопасность</div>
+                    </div>
+                </a>
+                <a href="fumon.php">
+                    <div class="wspShortcut fumon">Учет топлива
+                        <img class="wspIcon" src="res/oil32.png">
+                        <div class="wsHint">Отчеты по расходу, бункеровка, подр.информация</div>
+                    </div>
+                </a>
+                <a href="maint.php">
+                    <div class="wspShortcut maint">Обслуживание, ремонт
+                        <img class="wspIcon" src="res/maint32.png">
+                        <div class="wsHint">Информация по техническому обслуживанию и ремонту</div>
+                    </div>
+                </a>
+                <a href="res.php">
+                    <div class="wspShortcut res">Ресурсы
+                        <img class="wspIcon" src="res/calc32.png">
+                        <div class="wsHint">Рабочее время, прямые расходы</div>
+                    </div>
+                </a>
+                <a href="other.php">
+                    <div class="wspShortcut other">Прочее
+                        <img class="wspIcon" src="res/more32.png">
+                        <div class="wsHint">Мониторинг СНО, водопосты</div>
+                    </div>
+                </a>
+                <a href="logout.php">
+                    <div class="wspShortcut exit">Выход
+                        <img class="wspIcon" src="res/exit26.png">
+                        <div class="wsHint">Выход из учетной записи</div>
+                    </div>
+                </a>
+            </body>
+        </html>
+        <?php
+    }
+?>
