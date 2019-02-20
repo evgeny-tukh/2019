@@ -5,6 +5,8 @@
     $sessionMgr = new SessionManager ();
 
     $curTime = time ();
+    $link    = $_REQUEST ['l'];
+    $site    = 'localhost:8080';
     
     if (!$sessionMgr->isAuthenticated () || $sessionMgr->isSessionExpired ())
     {
@@ -15,6 +17,7 @@
         $sessionMgr->setAccessTime ();
         
         $features = $sessionMgr->getUserFeatures ();
+
         ?>
 
         <!DOCTYPE html>
@@ -37,13 +40,14 @@
                         padding:          0px;
                     }
                 </style>
+
                 <script>
                     function initPage ()
                     {
                         //document.getElementById ('shipLocation').onclick = function () { redirectTo ('<?php /*echo redirectTo ('jecat.ru/FmosDemo');*/ ?>'); };
 
                         commonPageInit ();
-                        redirectTo ('<?php echo redirectTo ('localhost:8080/fms', 'localhost:8080/new'); ?>');
+                        redirectTo ('<?php echo redirectTo ("$site/$link", "$site/new"); ?>');
                     }
                 </script>
             </head>

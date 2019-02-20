@@ -31,7 +31,7 @@
                 <link rel="stylesheet" href="main.css"/>
             </head>
             <body>
-                <a href="fms.php">
+                <a href="fms.php?l=2019/fms">
                     <div class="wspShortcut flmon blink">Флот
                         <img class="wspIcon" src="res/tug32.png">
                         <div class="wsHint">Отсл.судов, опер.деят-ть, навиг.безопасность</div>
@@ -61,7 +61,7 @@
                         <div class="wsHint">....</div>
                     </div>
                 </a>
-                <a href="wposts.php">
+                <a href="fms.php?l=2019/wl">
                     <div class="wspShortcut wposts">Водопосты
                         <img class="wspIcon" src="res/watermeter26.png">
                         <div class="wsHint">....</div>

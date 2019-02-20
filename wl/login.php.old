@@ -1,0 +1,54 @@
+<?php
+
+    require_once 'db/database.php';
+    require_once 'session/session_mgr.php';
+    require_once 'util/util.php';
+    require_once 'util/auth.php';
+    
+    $sessionMgr = new SessionManager ();
+    $creds      = [['un' => 'jecat', 'p' => 'karina', 'id' => 1], ['un' => 'denis', 'p' => 'moris-2018', 'id' => 2]];
+    $authorized = FALSE;
+    $message    = 'Invalid user name.';
+    $userID     = NULL;
+    $isAdmin    = FALSE;
+    $features   = 0;
+    $userName   = getParam ('un');
+    $password   = getParam ('p');
+
+    $authKey  = getAuthKey ();
+    $data     = $authKey ? json_decode (openssl_decrypt (base64_decode ($authKey), 'AES-128-ECB', getEncriptionKey ()), TRUE) : $_POST;
+
+    foreach ($creds as $pair)
+    {
+        if ($pair ['un'] === $data ['un'] && $pair ['p'] === $data ['p'])
+        {
+            $authorized = TRUE; 
+            $userID     = $pair ['id'];
+
+            break;
+        }
+    }
+
+    if ($authorized)
+    {
+        $sessionMgr->setAuthenticationStatus (TRUE);
+        $sessionMgr->setUserID ($userID);
+        $sessionMgr->setAccessTime ();
+
+        if ($authKey)
+            header ("Location: index.php?k=$authKey");
+        else
+            header ('Location: index.php');
+    }
+    else
+    {
+        $sessionMgr->setAuthenticationStatus (FALSE);
+        
+        header ('Location: login.html');
+    }
+
+    function getParam ($paramName)
+    {
+        return array_key_exists ($paramName, $_REQUEST) ? $_REQUEST [$paramName] : NULL;
+    }
+?>

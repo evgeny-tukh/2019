@@ -7,8 +7,8 @@ function initAbris (map)
     function getAbrisTile (coord, zoom)
     {
         var X   = coord.x % (1 << zoom);  // wrap
-        //var url = 'http://jecat.ru/vlad_demo7/tiles_new/get_abris_tiles.php?z=' + zoom.toString () + '&x=' + coord.x.toString () + '&y=' + coord.y.toString ();
-        var url = 'http://localhost:8080/CaryTestPhp/tiles/get_abris_tiles.php?z=' + zoom.toString () + '&x=' + coord.x.toString () + '&y=' + coord.y.toString ();
+        var url = 'http://jecat.ru/port/tiles/get_abris_tiles.php?z=' + zoom.toString () + '&x=' + coord.x.toString () + '&y=' + coord.y.toString ();
+        //var url = 'http://localhost:8080/CaryTestPhp/tiles/get_abris_tiles.php?z=' + zoom.toString () + '&x=' + coord.x.toString () + '&y=' + coord.y.toString ();
 
         return url;
     }
