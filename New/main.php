@@ -37,7 +37,7 @@
                         <div class="wsHint">Отсл.судов, опер.деят-ть, навиг.безопасность</div>
                     </div>
                 </a>
-                <a href="fumon.php">
+                <a href="fms.php?l=2019/fuel">
                     <div class="wspShortcut fumon">Топливо
                         <img class="wspIcon" src="res/oil32.png">
                         <div class="wsHint">Отчеты по расходу, бункеровка, подр.информация</div>
@@ -67,7 +67,7 @@
                         <div class="wsHint">....</div>
                     </div>
                 </a>
-                <a href="safecnt.php">
+                <a href="fms.php?l=2019/port">
                     <div class="wspShortcut safecnt">Безоп.осадка
                         <img class="wspIcon" src="res/echo32.png">
                         <div class="wsHint">....</div>
@@ -79,10 +79,10 @@
                         <div class="wsHint">....</div>
                     </div>
                 </a>
-                <a href="logout.php">
-                    <div class="wspShortcut exit">Выход
-                        <img class="wspIcon" src="res/exit26.png">
-                        <div class="wsHint">Выход из учетной записи</div>
+                <a href="fms.php?l=2019/icemon">
+                    <div class="wspShortcut exit">Ледовая обстановка
+                        <img class="wspIcon" src="res/snowflake32.png">
+                        <div class="wsHint">Оптические и радарные ледовые снимки</div>
                     </div>
                 </a>
             </body>
