@@ -6,7 +6,8 @@
 
     $curTime = time ();
     $link    = $_REQUEST ['l'];
-    $site    = 'localhost:8080';
+    $absPath = strtolower (substr ($link, 0, 4)) === 'http';
+    $site    = 'jecat.ru';
     
     if (!$sessionMgr->isAuthenticated () || $sessionMgr->isSessionExpired ())
     {
@@ -47,7 +48,7 @@
                         //document.getElementById ('shipLocation').onclick = function () { redirectTo ('<?php /*echo redirectTo ('jecat.ru/FmosDemo');*/ ?>'); };
 
                         commonPageInit ();
-                        redirectTo ('<?php echo redirectTo ("$site/$link", "$site/new"); ?>');
+                        redirectTo ('<?php echo $absPath ? $link : redirectTo ("$site/$link", "$site/new"); ?>');
                     }
                 </script>
             </head>

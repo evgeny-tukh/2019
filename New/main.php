@@ -73,7 +73,7 @@
                         <div class="wsHint">....</div>
                     </div>
                 </a>
-                <a href="sno.php">
+                <a href="fms.php?l=https://gis-mt.ru/site/login">
                     <div class="wspShortcut sno">СНО
                         <img class="wspIcon" src="res/engine32.png">
                         <div class="wsHint">....</div>
