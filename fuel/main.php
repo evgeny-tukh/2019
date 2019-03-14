@@ -127,7 +127,7 @@
                         
                         $indent   = str_repeat (' ', 20);
                         //$fuelForm = "<embed src=\"res/fuel_form.xls\" type=\"application/x-excel\">";
-                        $fuelForm = "<iframe width=\"400\" height=\"400\" src=\"localhost:8080/2019/fuel/res/fuel_form.xls\">Не поддерживается</iframe>";
+                        $fuelForm = "<iframe id=\"fuelFrame\" class=\"childFrame\">Не поддерживается</iframe>";
                         
                         if ($authKey)
                         {

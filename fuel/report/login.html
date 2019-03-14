@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Login test
+        </title>
+        <script>
+            function login ()
+            {
+                var request = new XMLHttpRequest ();
+                var body    = '_csrf=4hSj5NQuyKnJL1WUi80wkyk4UlWocPx-uK3AabRS_znaQPO751mj6JlmIfXNkmP9ZHdlDeMzxCT2-Ysv8RXObA%3D%3D&LoginForm%5Bemail%5D=va%40moris.tech&LoginForm%5Bpassword%5D=ft6dayy&LoginForm%5BrememberMe%5D=0&LoginForm%5BrememberMe%5D=1&login-button=';
+
+                request.open ('post', 'https://gis-mt.ru/site/login', true);
+                request.setRequestHeader ('Content-Type', 'application/x-www-form-urlencoded');
+                request.setRequestHeader ('Host', 'gis-mt.ru');
+                request.setRequestHeader ('Origin', 'https://gis-mt.ru');
+                request.setRequestHeader ('Referrer', 'https://gis-mt.ru/site/login');
+                request.setRequestHeader ('Cookie', 'PHPSESSID=jticmuiqbtgbpm0d2s7ah0p4id; _csrf=a3ad8bc23549c589089dfe64e967dbd02e03cb897d49d5ad65e813c853ca2a6fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%228TP_3wkAPItaF_SnMO7XKC8ZNTKFEG1U%22%3B%7D');
+
+                request.onload = function ()
+                                 {
+                                     alert (this.responseText);
+                                 };
+
+                request.send (body);
+            }
+        </script>
+    </head>
+    <body>
+       <button onclick="login();">Login</button>
+    </body>
+</html>

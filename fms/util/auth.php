@@ -38,18 +38,38 @@
 
             if ($database)
             {
-                $data = json_decode (openssl_decrypt (base64_decode ($authKey), 'AES-128-ECB', getEncriptionKey ()), TRUE);
-
-                if (array_key_exists ('un', $data) && array_key_exists ('p', $data))
+                if (substr ($authKey, 10, 3) === 'un:')
                 {
-                    $userInfo = $database->checkCredentials ($data ["un"], $data ["p"]);
-                    $userID   = array_key_exists ('id', $userInfo) ? $userInfo ['id'] : NULL;
+                    $passPos = strpos ($authKey, 'p:', 14);
+                    
+                    if ($passPos !== FALSE)
+                    {
+                        $userName = substr ($authKey, 13, $passPos - 13);
+                        $password = substr ($authKey, $passPos + 2);
+                        
+                        $userInfo = $database->checkCredentials ($userName, $password);
+                        $userID   = array_key_exists ('id', $userInfo) ? $userInfo ['id'] : NULL;
 
-                    $sessionMgr->setAuthenticationStatus (TRUE);
-                    $sessionMgr->setUserID ($userID);
-                    $sessionMgr->setAccessTime ();
+                        $sessionMgr->setAuthenticationStatus (TRUE);
+                        $sessionMgr->setUserID ($userID);
+                        $sessionMgr->setAccessTime ();
+                    }
                 }
+                else
+                {
+                    $data = json_decode (openssl_decrypt (base64_decode ($authKey), 'AES-128-ECB', getEncriptionKey ()), TRUE);
 
+                    if (array_key_exists ('un', $data) && array_key_exists ('p', $data))
+                    {
+                        $userInfo = $database->checkCredentials ($data ["un"], $data ["p"]);
+                        $userID   = array_key_exists ('id', $userInfo) ? $userInfo ['id'] : NULL;
+
+                        $sessionMgr->setAuthenticationStatus (TRUE);
+                        $sessionMgr->setUserID ($userID);
+                        $sessionMgr->setAccessTime ();
+                    }
+                }
+                
                 $database->close ();
             }
         }

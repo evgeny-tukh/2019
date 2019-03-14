@@ -16,6 +16,7 @@ function initAbris (map)
 
 function initLayers (map)
 {
+    loadNotToGoAreas ();
     loadLayerList (onLayerListLoaded);
     
     function onLayerListLoaded (layerList)

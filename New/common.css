@@ -12,6 +12,20 @@
     100% { color: rgba(34, 34, 34, 1); }                
 }
 
+@keyframes blinkingIcn
+{
+    0% { display: none; }
+    50% { display: default; }
+    100% { display: none; }                
+}
+
+@-webkit-keyframes blinkingIcn
+{
+    0% { display: none; }
+    50% { display: default; }
+    100% { display: none; }                
+}
+
 body
 {
     background-color: cyan;

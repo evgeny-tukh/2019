@@ -82,7 +82,7 @@
                     <script src="../cary/ui/generic/editbox.js"></script>
                     <script src="../cary/ui/generic/slider.js"></script>
                     <script src="../cary/ui/generic/treeview.js"></script>
-                    <script src="../cary/ui/generic/listview.js"></script>
+                    <script src="../cary/ui/generic/listview.js?a=b"></script>
                     <script src="../cary/ui/generic/listbox.js"></script>
                     <script src="../cary/ui/generic/browser.js"></script>
                     <script src="../cary/ui/generic/browsebox.js"></script>
@@ -100,6 +100,7 @@
                     <script src="../cary/ui/dlg/browser_wnd.js"></script>
                     <script src="ui/side_pane.js"></script>
                     <script src="ui/fleet_pane.js"></script>
+                    <script src="ui/ntg_area_pane.js"></script>
                     <script src="ui/data_pane.js"></script>
                     <script src="ui/track_settings.js"></script>
                     <script src="ui/graph_wnd.js"></script>
@@ -135,6 +136,7 @@
                             switchButton ('mapBut', 'Дислокация', $indent);
                             switchButton ('activityBut', 'Опер.деятельность', $indent);
                             switchButton ('securityBut', 'Безопасность', $indent);
+                            echo "$indent<img src=\"res/exclamation40.png\" style=\"margin: 0px; position: absolute; top: 3px; right: 10px; display: none;\" id=\"warnIcn\" />";
                             echo "$indent</div>\n";
                             childPane ('map', $indent);
                             childPane ('activity', $indent);

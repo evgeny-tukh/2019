@@ -13,17 +13,20 @@ var lastReport;
 var endTime;
 var beginTime;
 var timeInterval;
+var notToGoAreas  = null;
 
 function init ()
 {
     var settingsButton;
     var zoomInButton;
     var zoomOutButton;
+    var ntgAreasButton;
     var settingsPane;
     var fleetButton;
     var logoutButton;
     var calendarButton;
     var fleetPane   = null;
+    var ntgAreaPane = null;
     var mapBut      = document.getElementById ('mapBut');
     var activityBut = document.getElementById ('activityBut');
     var securityBut = document.getElementById ('securityBut');
@@ -77,6 +80,7 @@ function init ()
     
     map = new Cary.Map ();
 
+    loadNotToGoAreas ();
     //initLayers (map);
     //initDepthAreas (map);
     //initAbris (map);
@@ -118,6 +122,7 @@ function init ()
     logoutButton   = map.createImgButton (google.maps.ControlPosition.TOP_RIGHT, 'res/exit26.png', { onClick: logout });
     fleetButton    = map.createImgButton (google.maps.ControlPosition.TOP_RIGHT, 'res/tug26.png', { onClick: showFleetPane });
     calendarButton = map.createImgButton (google.maps.ControlPosition.TOP_RIGHT, 'res/calendar26.png', { onClick: setTimeFrame });
+    ntgAreasButton = map.createImgButton (google.maps.ControlPosition.TOP_RIGHT, 'res/nottogo26.png', { onClick: showNotToGoAreasPane });
     zoomInButton   = map.createImgButton (google.maps.ControlPosition.LEFT_BOTTOM, 'res/zoom-in-20.png', { onClick: function () { map.zoomIn (); } });
     zoomOutButton  = map.createImgButton (google.maps.ControlPosition.LEFT_BOTTOM, 'res/zoom-out-20.png', { onClick: function () { map.zoomOut (); } });
     settingsPane   = map.createGMPanel (google.maps.ControlPosition.TOP_LEFT, { onInit: onInitSettingsPane });
@@ -126,6 +131,7 @@ function init ()
     settingsButton.show ();
     zoomInButton.show ();
     zoomOutButton.show ();
+    ntgAreasButton.show ();
 
     if (!authKey)
     {
@@ -146,6 +152,45 @@ function init ()
                                                    {
                                                    };
                 }, 1000);
+    
+    function loadNotToGoAreas ()
+    {
+        notToGoAreas = new Cary.userObjects.ObjectCollection ();
+        
+        Cary.tools.sendRequest ({ method: Cary.tools.methods.get, content: Cary.tools.contentTypes.plainText, resType: Cary.tools.resTypes.json, url: 'requests/ntga_get_list.php',
+                                  onLoad: onLoad });
+        
+        function onLoad (data)
+        {
+            var options = {};
+            
+            notToGoAreas.deserialize (data, function () { return new Cary.userObjects.UserPolygon; });
+
+            data.objects.forEach (function (object, index)
+                                  {
+                                      var ntga = notToGoAreas.objects [index];
+                                      
+                                      ntga.properties.enabled = object.enabled;
+                                      
+                                      if (object.enabled)
+                                      {
+                                          ntga.drawer = ntga.createDrawer ();
+                                          
+                                          ntga.drawer.draw (map.map);
+                                      }
+                                  });
+            
+            if (authKey)
+                options.parent = document.getElementById ('vesselPane');
+
+            ntgAreaPane = new NotToGoAreaPane ({ onClose: onNTGareaPaneClose}, options);
+            
+            function onNTGareaPaneClose ()
+            {
+                fleetPane.updateVesselItemStates ();
+            }
+        }
+    }
     
     function getMaximalTimFrame ()
     {
@@ -242,6 +287,12 @@ function init ()
     function onMouseMove (event)
     {
         posInd.onMouseEvent (event);
+    }
+
+    function showNotToGoAreasPane ()
+    {
+        if (ntgAreaPane)
+            ntgAreaPane.show ();
     }
 
     function showFleetPane ()
@@ -662,3 +713,4 @@ function drawTrack (track, mode)
         }
     }
 }
+

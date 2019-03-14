@@ -27,7 +27,7 @@ function FleetPane (callbacks, options)
     this.callbacks = Cary.tools.isNothing (callbacks) ? {} : callbacks;
     
     Cary.ui.Window.apply (this, [{ position: { top: 0, right: 0, width: '400px', height: Cary.tools.int2pix (height), absolute: true }, 
-                                 title: stringTable.vessels, parent: parent }]);
+                                 title: stringTable.vessels, parent: parent, noCloseIcon: true }]);
 }
 
 FleetPane.prototype = Object.create (Cary.ui.Window.prototype);
@@ -57,22 +57,85 @@ FleetPane.prototype.onInitialize = function ()
         dataPane.hide ();
     else
         dataPane.show ();
+
+    this.updateVesselItemStates = function ()
+    {
+        document.getElementById ('warnIcn').style.display = 'none';
+        
+        for (var i = 0; i < vesselList.getItemCount (); ++ i)
+            checkIfVesselCrossedNTGAreas (vesselList.getItemData (i), warnVesselItem, unwarnVesselItem, vesselList.items [i]);
+    };
     
     function loadAllVessels ()
     {
         fleets.enumVessels (addVesselItem);
     }
     
+    function checkIfVesselCrossedNTGAreas (vessel, onCrosses, onDoesNotCross, param)
+    {
+        var track = new Track (vessel);
+        
+        track.load ({ begin: beginTime, end: endTime, onLoaded: onLoaded });
+        
+        function onLoaded (loadedTrack)
+        {
+            var crossed = false;
+            
+            if (loadedTrack.points.length > 0)
+            {
+                var ntgaCrossed;
+
+                for (var i = 0, ntgaCrossed = false; !ntgaCrossed && i < notToGoAreas.objects.length; ++ i)
+                {
+                    var area = notToGoAreas.objects [i];
+                    
+                    ntgaCrossed = area.properties.enabled && loadedTrack.crossesContour (area.points);
+                }
+
+                if (ntgaCrossed)
+                    onCrosses (param);
+                else
+                    onDoesNotCross (param);
+                
+                crossed |= ntgaCrossed;
+            }
+        
+            if (crossed)
+                document.getElementById ('warnIcn').style.display = null;
+        }
+    }
+    
     function addVesselItem (vessel)
     {
         var lastReport;
-
+        var item;
+        
         if (vessel.lastReport)
             lastReport = Cary.tools.formatDateHours (vessel.lastReport);
         else
             lastReport = stringTable.noData;
 
-        vesselList.addItem ([vessel.name, Vessel.getTypeName (vessel.type), lastReport], vessel);
+        item = vesselList.addItem ([vessel.name, Vessel.getTypeName (vessel.type), lastReport], vessel);
+        
+        checkIfVesselCrossedNTGAreas (vessel, warnVesselItem, unwarnVesselItem, item);
+    }
+
+    function warnVesselItem (item)
+    {
+        item.itemColumns.forEach (function (column)
+                                  {
+                                      column.style.color      = 'red';
+                                      column.style.fontWeight = 'bold';
+                                  });
+    }
+    
+    function unwarnVesselItem (item)
+    {
+        item.itemColumns.forEach (function (column)
+                                  {
+                                      column.style.color      = null;
+                                      column.style.fontWeight = null;
+                                  });
     }
     
     function onFleetSelect ()
@@ -146,8 +209,6 @@ FleetPane.prototype.onInitialize = function ()
 
 FleetPane.prototype.queryClose = function ()
 {
-    this.hide ();
-    
     return false;
 };
 

@@ -128,19 +128,10 @@ FleetPane.prototype.onInitialize = function ()
     function onSelectVessel (row, column, item)
     {
         var vessel = vesselList.getItemData (row);
-        
-        dataPane.setVessel (vessel);
-        
-        if (!vessel.lastReport)
-        {
-            removeOldTrack (row);
-            
-            new Cary.ui.MessageBox ({ title: stringTable.error, text: stringTable.noTrackData }); return;
-        }
-        
-        map.setCenter (vessel.lat, vessel.lon);
-        
-        onSwitchVesselTrack (row, column, item);
+        var now    = new Date ();
+
+        document.getElementById ('fuelFrame').src = 'report/report.php?v=' + vessel.id.toString () + '&m=' + (now.getMonth () + 1).toString () +
+                                                    '&y=' + now.getFullYear ().toString ();
     }
 };
 

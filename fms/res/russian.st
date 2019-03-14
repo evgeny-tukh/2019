@@ -180,3 +180,6 @@ allVessel,Все суда
 dislocation,Дислокация
 operActivity,Опер.деятельность
 security,Безопасность
+ntgAreas,Not-to-go-районы
+active,Активный
+activeShort,Актвн

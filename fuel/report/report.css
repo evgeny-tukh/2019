@@ -1,0 +1,126 @@
+table
+{
+    overflow: scroll;
+}
+
+tr
+{
+    height: fit-content;
+    margin: 0px;
+    padding: 0px;
+}
+
+td
+{
+    height: 100%;
+    font-size: 12pt;
+    border-style: solid;
+    border-color: #bbbbbb;
+    border-width: 1px;
+    margin: 0px;
+    width: 80px;
+}
+
+.save
+{
+    float: right;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 3px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.sel
+{
+    background-color: yellow;
+}
+
+.field
+{
+    border-bottom-color: black;
+    cursor: pointer;
+}
+
+.cntTxt
+{
+    text-align: center;
+}
+
+.rgtTxt
+{
+    text-align: right;
+}
+
+.lftTxt
+{
+    text-align: left;
+}
+
+.aj
+{
+    width: 800px;
+}
+
+.ad, .eg
+{
+    width: 320px;
+}
+
+.f13
+{
+    font-size: 13pt;
+}
+
+.f11
+{
+    font-size: 11pt;
+}
+
+.f12
+{
+    font-size: 12pt;
+}
+
+.f14
+{
+    font-size: 14pt;
+}
+
+.f15
+{
+    font-size: 15pt;
+}
+
+.f16
+{
+    font-size: 16pt;
+}
+
+.f17
+{
+    font-size: 17pt;
+}
+
+.f18
+{
+    font-size: 18pt;
+}
+
+.f19
+{
+    font-size: 19pt;
+}
+
+.f20
+{
+    font-size: 20pt;
+}
+
+.bold
+{
+    font-weight: bold;
+}

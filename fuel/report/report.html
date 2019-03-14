@@ -30,9 +30,28 @@
                 width: 80px;
             }
 
+            .save
+            {
+                float: right;
+                border-width: 1px;
+                border-style: solid;
+                border-color: black;
+                border-radius: 3px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+            }
+
+            .sel
+            {
+                background-color: yellow;
+            }
+
             .field
             {
                 border-bottom-color: black;
+                cursor: pointer;
             }
 
             .cntTxt
@@ -115,8 +134,74 @@
                 font-weight: bold;
             }
         </style>
+        <script>
+            var monthCtl, yearCtl;
+            var month, year;
+
+            function onChangePeriod ()
+            {
+                month = monthCtl.selectedIndex + 1;
+                year  = parseInt (yearCtl.value);
+alert ('month '+month+' of '+year);
+            }
+
+            function init ()
+            {
+                var fields = document.getElementsByClassName ('field');
+
+                monthCtl = document.getElementById ('month');
+                yearCtl  = document.getElementById ('year');
+
+                monthCtl.onchange = onChangePeriod;
+                yearCtl.onchange  = onChangePeriod;
+
+                for (var i = 0; i < fields.length; ++ i)
+                {
+                    fields [i].onclick = function (event) 
+                                         {
+                                             var edit = document.createElement ('input');
+
+                                             edit.type                  = 'text';
+                                             edit.className             = 'f14';
+                                             edit.style.top             = '0px';
+                                             edit.style.left            = '0px';
+                                             edit.style.width           = '100%';
+                                             edit.style.height          = '100%';
+                                             edit.style.textAlign       = 'center';
+                                             edit.style.borderStyle     = 'single';
+                                             edit.style.borderWidth     = '1px';
+                                             edit.style.borderColor     = 'black';
+                                             edit.style.margin          = '0px';
+                                             //edit.style.paddingLeft     = '2px';
+                                             //edit.style.paddingRight    = '2px';
+                                             edit.style.backgroundColor = 'yellow';
+                                             edit.value                 = event.target.innerText;
+                                             edit.savedValue            = event.target.innerText;
+                                             edit.onkeydown             = function (event)
+                                                                          {
+                                                                              if (event.key === 'Enter')
+                                                                              {
+                                                                                  this.parentElement.innerText = this.value;
+
+                                                                                  this.parentElement.removeChild (this);
+                                                                              }
+                                                                              else if (event.key === 'Escape')
+                                                                              {
+                                                                                  this.parentElement.innerText = this.savedValue;
+
+                                                                                  this.parentElement.removeChild (this);
+                                                                              }
+                                                                          };
+
+                                             event.target.innerText = null;
+
+                                             event.target.appendChild (edit);
+                                         };
+                }
+            }
+        </script>
     </head>
-    <body>
+    <body onload="init ();">
         <table cellpadding="5" cellspacing="0" cols="10" border="1" bordercolor="gray" rules="all" width="800">
             <tr>
                 <td></td>
@@ -133,17 +218,41 @@
             <tr>
                 <td class="f20 bold cntTxt" colspan="10">
                     МЕСЯЧНЫЙ ОТЧЕТ
+                    <button class="save f14" id="save">Сохранить</button>
                 </td>
             </tr>
             <tr>
                 <td class="rgtTxt bold" colspan="4">
                     по топливу и смазке за
                 </td>
-                <td id="month" class="cntTxt bold field" colspan="3">
-                    июнь
+                <td class="cntTxt bold" colspan="3">
+                    <select size="1" id="month" class="sel f14">
+                        <option>Январь</option>
+                        <option>Февраль</option>
+                        <option>Март</option>
+                        <option>Апрель</option>
+                        <option>Май</option>
+                        <option>Июнь</option>
+                        <option>Июль</option>
+                        <option>Август</option>
+                        <option>Сентябрь</option>
+                        <option>Октябрь</option>
+                        <option>Ноябрь</option>
+                        <option>Декабрь</option>
+                    </select>
                 </td>
                 <td class="lftTxt bold" colspan="3">
-                    месяц 2018
+                    месяц
+                    <select size="1" id="year" class="sel f14" style="margin-left: 5px;">
+                        <option>2018</option>
+                        <option>2019</option>
+                        <option>2020</option>
+                        <option>2021</option>
+                        <option>2022</option>
+                        <option>2023</option>
+                        <option>2024</option>
+                        <option>2025</option>
+                    </select>
                 </td>
             </tr>
             <tr>
