@@ -120,15 +120,17 @@
                         <div class="wsHint">Информация по техобслуживанию и ремонту</div>
                     </div>
                 </a>
-                <a href="crew.php">
-                    <div class="wspShortcut crew">Экипажи
+                <a href="">
+                <!--<a href="crew.php">-->
+                    <div class="wspShortcutGrayed crew">Экипажи
                         <img src="res/exclamation30.png" class="ind" id="crew_ind"/>
                         <img class="wspIcon" src="res/crew32.png">
                         <div class="wsHint">....</div>
                     </div>
                 </a>
-                <a href="efficiency.php">
-                    <div class="wspShortcut efficiency">Оценка эффективности
+                <a href="">
+                <!--<a href="efficiency.php">-->
+                    <div class="wspShortcutGrayed efficiency">Оценка эффективности
                         <img src="res/exclamation30.png" class="ind" id="eff_ind"/>
                         <img class="wspIcon" src="res/bigthumb32.png">
                         <div class="wsHint">....</div>

@@ -7,7 +7,7 @@ body
     background-size: 50%;
 }
 
-.wspShortcut
+.wspShortcut, .wspShortcutGrayed
 {
     position: absolute;
     width: 30%;
@@ -15,8 +15,6 @@ body
     border-style: none;
     border-width: 0px;
     border-radius: 10px;
-    box-shadow: 4px 4px rgb(120, 120, 120);
-    background-color: rgba(0, 255, 0, 0.5);
     color: rgb(80, 80, 80);
     font-size: 25pt;
     font-weight: bold;
@@ -26,6 +24,22 @@ body
     padding-bottom: 20pt;
     text-align: center;
     z-index: 2;
+    box-shadow: 4px 4px rgb(120, 120, 120);
+}
+
+.wspShortcut
+{
+    background-color: rgba(0, 255, 0, 0.5);
+}
+
+.wspShortcutGrayed
+{
+    background-color: rgba(200, 200, 200, 0.5);
+}
+
+.wspShortcutGrayed:hover
+{
+    background-color: rgba(100, 100, 100, 0.5);
 }
 
 .wspShortcut:hover
