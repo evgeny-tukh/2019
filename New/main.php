@@ -95,6 +95,10 @@
                 </script>
             </head>
             <body onload="init ();">
+                <div class="coverUpr">
+                </div>
+                <div class="coverLwr">
+                </div>
                 <a href="fms.php?l=2019/fms">
                     <div class="wspShortcut flmon blink">Флот
                         <img src="res/exclamation30.png" class="ind" id="fms_ind"/>
@@ -152,7 +156,7 @@
                     </div>
                 </a>
                 <a href="fms.php?l=2019/icemon">
-                    <div class="wspShortcut exit">Ледовая обстановка
+                    <div class="wspShortcut ice">Ледовая обстановка
                         <img src="res/exclamation30.png" class="ind" id="ice_ind"/>
                         <img class="wspIcon" src="res/snowflake32.png">
                         <div class="wsHint">Оптические и радарные ледовые снимки</div>

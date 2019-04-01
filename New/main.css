@@ -3,7 +3,7 @@ body
     background-color: rgb(200, 200, 255);
     background-repeat: no-repeat;
     background-position: center top;
-    background-image: url(res/collage2.jpg);
+    /*background-image: url(res/collage2.jpg);*/
     background-size: 50%;
 }
 
@@ -25,6 +25,7 @@ body
     padding-top: 5pt;
     padding-bottom: 20pt;
     text-align: center;
+    z-index: 2;
 }
 
 .wspShortcut:hover
@@ -116,10 +117,44 @@ body
     width: auto;
 }
 
-.exit
+.ice
 {
     bottom: 22%;
     left: 35%;
     right: 35%;
     width: auto;
+}
+
+.coverUpr, .coverLwr
+{
+    z-index: 1;
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    border-style: none;
+    border-width: 0px;
+    width: 100%;
+    left: 0px;
+}
+
+.coverUpr
+{
+    background-color: yellow;
+    background-image: url(res/riv_fl.jpg);
+    background-size: cover;
+    background-position: center center;
+    height: 55%;
+    top: 0px;
+    opacity: 0.4;
+}
+
+.coverLwr
+{
+    background-color: red;
+    background-image: url(res/map.jpg);
+    height: 45%;
+    bottom: 0px;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.4;
 }
