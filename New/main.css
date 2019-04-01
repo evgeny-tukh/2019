@@ -97,8 +97,10 @@ body
 
 .safecnt
 {
-    bottom: 3%;
-    right: 3%;
+    bottom: 22%;
+    left: 35%;
+    right: 35%;
+    width: auto;
 }
 
 .sno
@@ -119,10 +121,8 @@ body
 
 .ice
 {
-    bottom: 22%;
-    left: 35%;
-    right: 35%;
-    width: auto;
+    bottom: 3%;
+    right: 3%;
 }
 
 .coverUpr, .coverLwr
