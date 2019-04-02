@@ -1,6 +1,8 @@
 html
 {
     overflow: hidden;
+    padding: 0px;
+    margin: 0px;
 }
 
 body
@@ -8,6 +10,7 @@ body
     width: 100%;
     height: 100%;
     padding: 0px;
+    margin: 0px;
 }
 
 .panel, .infoPanel
@@ -19,7 +22,8 @@ body
     position: absolute;
     background-color: lightskyblue;
     top: 0px;
-    height: 95%;
+    /*height: 98%;*/
+    bottom: 0px;
     margin: 3px;
     padding: 2px;
     text-align: center;

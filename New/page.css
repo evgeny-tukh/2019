@@ -13,7 +13,7 @@ a
     margin-top:         20px;
 }
 
-.docker, .docker2
+.docker, .docker2, .docker3
 {
     position:           absolute;
     left:               3px;
@@ -31,10 +31,19 @@ a
     bottom:             5px;
 }
 
-.docker2
+.docker2, .docker3
 {
     top:                0px;
+}
+
+.docker2
+{
     bottom:             18pt;
+}
+
+.docker3
+{
+    bottom:             5px;
 }
 
 .dockerFrame

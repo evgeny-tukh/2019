@@ -136,28 +136,28 @@
                         <div class="wsHint">....</div>
                     </div>
                 </a>
-                <a href="fms.php?l=2019/wl">
+                <a href="fms.php?b=0&l=2019/wl">
                     <div class="wspShortcut wposts">Водопосты
                         <img src="res/exclamation30.png" class="ind" id="wat_ind"/>
                         <img class="wspIcon" src="res/watermeter26.png">
                         <div class="wsHint">....</div>
                     </div>
                 </a>
-                <a href="fms.php?l=2019/port">
+                <a href="fms.php?b=0&l=2019/port">
                     <div class="wspShortcut safecnt">Безоп.осадка
                         <img src="res/exclamation30.png" class="ind" id="dpt_ind"/>
                         <img class="wspIcon" src="res/echo32.png">
                         <div class="wsHint">....</div>
                     </div>
                 </a>
-                <a href="fms.php?l=https://gis-mt.ru/site/login">
+                <a href="fms.php?b=0&l=https://gis-mt.ru/site/login">
                     <div class="wspShortcut sno">СНО
                         <img src="res/exclamation30.png" class="ind" id="sno_ind"/>
                         <img class="wspIcon" src="res/engine32.png">
                         <div class="wsHint">....</div>
                     </div>
                 </a>
-                <a href="fms.php?l=2019/icemon">
+                <a href="fms.php?b=0&l=2019/icemon">
                     <div class="wspShortcut ice">Ледовая обстановка
                         <img src="res/exclamation30.png" class="ind" id="ice_ind"/>
                         <img class="wspIcon" src="res/snowflake32.png">
