@@ -64,7 +64,7 @@ a
     padding-top:        0pt;
 }
 
-.bottomBut
+.bottomBut, .bottomButDisabled
 {
     display:            inline;
     margin-top:         0px;
@@ -73,8 +73,6 @@ a
     border-width:       0px;
     border-radius:      10px;
     box-shadow:         3px 3px rgb(120, 120, 120);
-    background-color:   rgba(0, 220, 0, 1.0);
-    color:              rgb(50, 50, 50);
     font-size:          18pt;
     line-height:        20pt;
     font-weight:        normal;
@@ -85,6 +83,18 @@ a
     text-align:         left;
     width:              fit-content;
     height:             18pt;
+}
+
+.bottomBut
+{
+    background-color:   rgba(0, 220, 0, 1.0);
+    color:              rgb(50, 50, 50);
+}
+
+.bottomButDisabled
+{
+    background-color:   rgba(220, 220, 220, 1.0);
+    color:              rgb(50, 50, 50);
 }
 
 .bottomBut:hover

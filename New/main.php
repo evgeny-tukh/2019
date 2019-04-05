@@ -106,7 +106,8 @@
                         <div class="wsHint">Отсл.судов, опер.деят-ть, навиг.безопасность</div>
                     </div>
                 </a>
-                <a href="fms.php?l=2019/fuel">
+                <!--<a href="fms.php?l=2019/fuel&l1=.fms&ln1=Флот&li1=tug32">-->
+                <a href="fms.php?l=2019/fuel&c=fuel">
                     <div class="wspShortcut fumon">Топливо
                         <img src="res/exclamation30.png" class="ind" id="fuel_ind"/>
                         <img class="wspIcon" src="res/oil32.png">

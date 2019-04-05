@@ -15,11 +15,19 @@
     function getAuthKey ()
     {
         if (array_key_exists (AUTH_KEY_S, $_SESSION))
+        {
             $authKey = $_SESSION [AUTH_KEY_S];
+        }
         else if (array_key_exists (AUTH_KEY_R, $_REQUEST))
+        {
             $authKey = $_REQUEST [AUTH_KEY_R];
+
+            $_SESSION [AUTH_KEY_S] = $authKey; // Remember for sequentional calls
+        }
         else
+        {
             $authKey = NULL;
+        }
 
         return $authKey;
     }

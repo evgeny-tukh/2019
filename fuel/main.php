@@ -12,7 +12,7 @@
 
     if ($authKey && !$sessionMgr->isAuthenticated ())
         checkAuthorizeByKey ($sessionMgr, $authKey);
-    
+
     if (!$sessionMgr->isAuthenticated () || $sessionMgr->isSessionExpired ())
     {
         include ('login.html');
@@ -128,7 +128,7 @@
                         $indent   = str_repeat (' ', 20);
                         //$fuelForm = "<embed src=\"res/fuel_form.xls\" type=\"application/x-excel\">";
                         $fuelForm = "<iframe id=\"fuelFrame\" class=\"childFrame\">Не поддерживается</iframe>";
-                        
+//die('???:'.$authKey);                        
                         if ($authKey)
                         {
                             echo "$indent<div class=\"pageSwitch\">\n";
