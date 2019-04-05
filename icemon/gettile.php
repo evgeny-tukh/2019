@@ -1,10 +1,11 @@
 <?php
 
-    $x = $_REQUEST ['x'];
-    $y = $_REQUEST ['y'];
-    $z = $_REQUEST ['z'];
-    $l = $_REQUEST ['l'];
-
+    $x             = $_REQUEST ['x'];
+    $y             = $_REQUEST ['y'];
+    $z             = $_REQUEST ['z'];
+    $l             = $_REQUEST ['l'];
+    $smooth        = array_key_exists ('s', $_REQUEST) ? intval ($_REQUEST ['s']) : 0;
+    $usePrefetch   = array_key_exists ('p', $_REQUEST) ? intval ($_REQUEST ['p']) : 0;
     $grayScaleOnly = array_key_exists ('g', $_REQUEST) ? intval ($_REQUEST ['g']) : 0;
 
     error_reporting (0);
@@ -13,18 +14,24 @@
 
     $prefetchedPath = "prefetch/$sceneFolder/$z/$x/$y.png";
 
-    if (file_exists ($prefetchedPath))
+    if ($usePrefetch && file_exists ($prefetchedPath))
     {
         header ('Content-Type: image/png');
-//echo "$prefetchedPath</br>";
+        
         $img = imagecreatefrompng ($prefetchedPath);
 
+        if ($smooth)
+        {
+            imagefilter ($img, IMG_FILTER_SMOOTH, 1);
+            imagefilter ($img, IMG_FILTER_PIXELATE, 2);
+        }
+        
         imagepng ($img);
         imagedestroy ($img);
     }
     else
     {
-        $url = "http://geomixer.scanex.ru/TileSender.ashx?ModeKey=tile&ftc=osm&x=$x&y=$y&z=$z&srs=3857&LayerName=$l&key=mm6UnkKa4BVxRa6YxDVxyYch5SeuT0VlGi82zJr9MhZ4XUGSOORqzgozbX5uByvl61AInDA4N0znBdLMEBmwF0d%2BsFJjK4smGIU8Xn5Dlfw%3D";
+        $url = "http://geomixer.scanex.ru/TileSender.ashx?ModeKey=tile&apikey=4WYFYJC5X0&ftc=osm&x=$x&y=$y&z=$z&srs=3857&LayerName=$l&key=mm6UnkKa4BVxRa6YxDVxyYch5SeuT0VlGi82zJr9MhZ4XUGSOORqzgozbX5uByvl61AInDA4N0znBdLMEBmwF0d%2BsFJjK4smGIU8Xn5Dlfw%3D";
         $img = imagecreatefromjpeg ($url);
 
         if ($img)
@@ -81,7 +88,13 @@
         }
         
         imagecolortransparent ($img, $bg);
-
+        
+        if ($smooth)
+        {
+            imagefilter ($img, IMG_FILTER_SMOOTH, 1);
+            imagefilter ($img, IMG_FILTER_PIXELATE, 2);
+        }
+        
         header ('Content-Type: image/png');
 
         imagepng ($img);

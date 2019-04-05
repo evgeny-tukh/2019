@@ -146,7 +146,7 @@
                 
                 <script src="custom_maps.js"></script>
                 <script src="border.js"></script>
-                <script src="main.js"></script>
+                <script src="main.js?a=b"></script>
                 <script src="side_pane.js"></script>
                 <script src="panel.js"></script>
                 <script src="pos_indicator.js"></script>

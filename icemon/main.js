@@ -1,7 +1,5 @@
 //var settings    = { scanexBorder: { west: 26.275, east: 31.33334, north: 61/*.99999*/, south: 59.3333 } };
-var settings    = { scanexBorder: { west: areaBox.west, east: areaBox.east, north: areaBox.north, south: areaBox.south, zoom: areaBox.zoom,
-                                    limitedWest: areaBox.l_west, limitedEast: areaBox.l_east, limitedNorth: areaBox.l_north, limitedSouth: areaBox.l_south,
-                                    limitedAreaText: areaBox.l_text, limitedAreaEnbabled: areaBox.l_enabled, limitedZoom: areaBox.l_zoom, } };
+var settings    = {};
 var layoutFlags = { LEFT_PANE: 1, BOTTOM_PANE: 2 };
 var globals     = { layout: layoutFlags.BOTTOM_PANE | layoutFlags.LEFT_PANE, minZoom: 7, maxZoom: 11 };
 
@@ -15,6 +13,10 @@ function init ()
     var btmPaneButton;
     var logoutButton;
     var posInd;
+
+    settings = { scanexBorder: { west: areaBox.west, east: areaBox.east, north: areaBox.north, south: areaBox.south, zoom: areaBox.zoom,
+                                 limitedWest: areaBox.l_west, limitedEast: areaBox.l_east, limitedNorth: areaBox.l_north, limitedSouth: areaBox.l_south,
+                                 limitedAreaText: areaBox.l_text, limitedAreaEnbabled: areaBox.l_enabled, limitedZoom: areaBox.l_zoom } };
 
     globals.map = map;
     
